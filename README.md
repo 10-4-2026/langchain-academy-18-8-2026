@@ -1,3 +1,9 @@
+
+# Work with Ollama Qwen3.1b on Ubuntu 26.04 in VMware on Windows 11 on Thinkpad E14 Gen 7 core 7
+# 16 GB RAM, 5.2GB for virtual machine 
+# 18-8-2026
+
+
 ![LangChain Academy](https://cdn.prod.website-files.com/65b8cd72835ceeacd4449a53/66e9eba1020525eea7873f96_LCA-big-green%20(2).svg)
 
 ## Introduction
