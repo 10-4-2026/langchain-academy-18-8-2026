@@ -4,8 +4,18 @@ from langgraph.graph import MessagesState
 from langgraph.graph import StateGraph, START, END
 
 # We will use this model for both the conversation and the summarization
-from langchain_openai import ChatOpenAI
-model = ChatOpenAI(model="gpt-4o", temperature=0) 
+#from langchain_openai import ChatOpenAI
+#model = ChatOpenAI(model="gpt-4o", temperature=0) 
+
+from langchain_ollama import ChatOllama
+
+model = ChatOllama(
+    #model="gemma3:1b",
+    #model='qwen3:1.7b',
+    model='sam860/qwen3:1.7b',
+    temperature=0,
+    #disabled_params={"parallel_tool_calls": None}  # Bỏ qua tham số gây lỗi
+)
 
 # State class to store messages and summary
 class State(MessagesState):
