@@ -1,5 +1,5 @@
 from langchain_core.messages import SystemMessage
-from langchain_openai import ChatOpenAI
+#from langchain_openai import ChatOpenAI
 
 from langgraph.graph import START, StateGraph, MessagesState
 from langgraph.prebuilt import tools_condition, ToolNode
@@ -34,7 +34,18 @@ def divide(a: int, b: int) -> float:
 tools = [add, multiply, divide]
 
 # Define LLM with bound tools
-llm = ChatOpenAI(model="gpt-4o")
+#llm = ChatOpenAI(model="gpt-4o")
+
+from langchain_ollama import ChatOllama
+
+llm = ChatOllama(
+    #model="gemma3:1b",
+    #model='qwen3:1.7b',
+    model='sam860/qwen3:1.7b',
+    temperature=0,
+    #disabled_params={"parallel_tool_calls": None}  # Bỏ qua tham số gây lỗi
+)
+
 llm_with_tools = llm.bind_tools(tools)
 
 # System message

@@ -1,7 +1,9 @@
-from langchain_openai import ChatOpenAI
+#from langchain_openai import ChatOpenAI
 from langgraph.graph import MessagesState
 from langgraph.graph import StateGraph, START, END
 from langgraph.prebuilt import ToolNode, tools_condition
+
+from langchain_ollama import ChatOllama
 
 # Tool
 def multiply(a: int, b: int) -> int:
@@ -14,7 +16,15 @@ def multiply(a: int, b: int) -> int:
     return a * b
 
 # LLM with bound tool
-llm = ChatOpenAI(model="gpt-4o")
+#llm = ChatOpenAI(model="gpt-4o")
+
+llm = ChatOllama(
+    #model="gemma3:1b",
+    #model='qwen3:1.7b',
+    model='sam860/qwen3:1.7b',
+    temperature=0,
+    #disabled_params={"parallel_tool_calls": None}  # Bỏ qua tham số gây lỗi
+)
 llm_with_tools = llm.bind_tools([multiply])
 
 # Node
